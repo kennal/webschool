@@ -1,0 +1,56 @@
+
+body 
+{
+	font-family: arial;
+	font-size: 16px;
+}
+
+
+div#box
+{
+	margin: 0 auto;
+	padding: 5px 25px;
+	width: 900px;
+}
+
+div#header h1
+{
+	margin: 20px 0;
+}
+
+div#page 
+{
+	border: dashed 1px;	
+	border-color: #ccc;
+	padding: 25px 30px;
+}
+
+div#user_panel {
+	padding: 10px 0px;
+	text-align: right;
+}
+
+div#page h2 
+{
+	margin-top: 0px;
+}
+
+div#error-page h2 
+{
+	font-size: 160px;
+	margin: 0px;
+	text-align: center;
+	color: #999;
+}
+
+div#error-page #content
+{
+	text-align: center;
+}
+
+div#footer 
+{
+	padding: 20px 10px 15px;	
+	text-align: center;
+}
+

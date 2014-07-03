@@ -1,0 +1,5 @@
+define ('db_host', '');
+define ('db_port', '');
+define ('db_dbname', '');
+define ('db_user', '');
+define ('db_password', '');
