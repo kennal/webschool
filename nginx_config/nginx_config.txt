@@ -1,0 +1,29 @@
+server 
+{
+	listen 80;
+
+	root /data/sites/webschool/public_root;
+	index index.php index.html index.htm;
+
+	server_name "webschool.devngnix";
+
+	location / 
+	{
+		try_files $uri $uri/ =404;
+	}
+	
+	location ~ \.php$ 
+	{
+		fastcgi_split_path_info ^(.+\.php)(/.+)$;
+		fastcgi_pass unix:/var/run/php5-fpm.sock;
+		fastcgi_index index.php;
+		include fastcgi_params;
+	}
+
+	rewrite ^/css/(.+)$ /css/$1 last;
+	rewrite ^/js/(.+)$ /js/$1 last;
+	rewrite ^/img/(.+)$ /img/$1 last;
+
+	rewrite ^(.+)$ /index.php?route=$1 last;
+
+}
