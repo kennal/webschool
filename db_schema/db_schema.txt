@@ -1,0 +1,52 @@
+Схема базы данных
+=================
+
+
+-- Пользователи
+
+CREATE TABLE users
+(
+  id bigserial NOT NULL,
+  name character varying(1000) NOT NULL,
+  email character varying(1000),
+  password character varying(32),
+  CONSTRAINT users_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+
+
+-- Регистрационные данные
+
+CREATE TABLE users_registration
+(
+  id bigint NOT NULL,
+  token character varying(64) NOT NULL,
+  "time" timestamp without time zone,
+  is_confirmed boolean NOT NULL DEFAULT false,
+  confirmed_time timestamp with time zone,
+  ip inet NOT NULL,
+  confirmed_ip inet,
+  CONSTRAINT users_registration_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+
+
+-- Запросы на восстановление пароля
+
+CREATE TABLE password_restore
+(
+  id bigint NOT NULL,
+  "time" timestamp with time zone NOT NULL,
+  ip_requested inet NOT NULL,
+  is_used boolean DEFAULT false,
+  used_time timestamp with time zone,
+  used_ip inet,
+  CONSTRAINT password_restore_pkey PRIMARY KEY (id, "time")
+)
+WITH (
+  OIDS=FALSE
+);
